@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Board Check</title>
+</head>
+<body>
+    <div id="insert">
+        <div class="key">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, vitae.
+        </div>
+    </div>
+</body>
+<script>
+    const insert = document.getElementById('insert');
+    window.addEventListener('keyup',(e)=>{
+        insert.innerHTML = `<h1>${e.key}  ${e.keyCode}  ${e.code}</h1>`
+    })
+</script>
+</html>

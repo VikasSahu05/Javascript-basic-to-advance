@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <div>
+        <ul id="images">
+            <li><img src="https://picsum.photos/id/1/200/100" id="one" alt=""></li>
+            <li><img src="https://picsum.photos/id/1/200/100" id="two" alt=""></li>
+            <li><img src="https://picsum.photos/id/1/200/100" id="three" alt=""></li>
+            <li><img src="https://picsum.photos/id/1/200/100" id="four" alt=""></li>
+            <li><a href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // to learn and practice
+    // type, timestamp, defaultPrevented, toElement, target, sourceElement, currentTarget
+    //clientX, ClientY, screenX, ScreenY
+    //altkey, ctrlkey, keyCode
+    
+    // what is event propogation
+    //1.eventBubbling
+    //2.eventCapturing
+
+    // // if u pass false on function it will follow bubbling pattern and if true then it will follow capturing
+    // document.getElementById('one').addEventListener('click',function(e){
+    //     console.log("one is clicked");
+    //     // e.stopPropagation();
+    // },false)
+
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     console.log("Ul inside is clicked");
+    // },false)
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+        
+    // },false);
+
+    document.querySelector("#images").addEventListener('click',function(e){
+        console.log(e.target.tagName);
+        // const time = e.timeStamp;
+        // const convert = new Date(time)
+        // console.log(convert);
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove();
+        }
+        // removeIt.parentNode.removeChild(removeIt);
+
+    })
+</script>
+</html>
