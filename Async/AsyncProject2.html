@@ -34,17 +34,25 @@
 
     //setInterval
     // -----------------------------------
-    let intID;
-        document.querySelector('#start').addEventListener('click',function(){
-            intID = setInterval(function(){
-                 console.log(Date.now());
-            },1000)
+    // let intID;
+    //     document.querySelector('#start').addEventListener('click',function(){
+    //         intID = setInterval(function(){
+    //              console.log(Date.now());
+    //         },1000)
 
-        })
-        document.querySelector('#stop').addEventListener('click',function(){
-            clearInterval(intID);
-            console.log("STOPPED");
-        })
+    //     })
+    //     document.querySelector('#stop').addEventListener('click',function(){
+    //         clearInterval(intID);
+    //         // intID=null;
+    //         console.log("STOPPED");
+    //     })
+
+    setTimeout(function(){
+        console.log("Vikas");
+    },2000)
             
+    setTimeout(function(){
+        console.log("Vicky");
+    },1000)
     </script>
 </html>

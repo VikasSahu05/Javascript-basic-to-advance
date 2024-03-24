@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        // let promise = new Promise(function(resolve, reject){
+        //     let yes=true;
+        //     if(!yes){
+        //         resolve("I am Done");
+        //     }else{
+        //         reject("Not done");
+        //     }
+        // }).then(()=>{
+        //     console.log("Resolve");
+        // }).catch((e)=>{
+        //     console.error(e);
+        // }).finally(()=>{
+        //     console.log("fgvhbjnk")
+        // })
+
+        const promiseOne = new Promise(function(resolve,reject){
+            //Do an sync task
+            //use for DB calls, cryptography, network
+            setTimeout(function(){
+                console.log('Aysnc task is completed');
+                resolve();
+            },1000);
+        })
+
+        promiseOne.then(function(){
+            console.log("Promise consumed");
+        })
+/////////////////////////////////////////////
+
+        new Promise(function(resolve,reject){
+            setTimeout(function(){
+                console.log("Resolved");
+                resolve();
+            },2000);
+        }).then(function(){
+            console.log("Async 2 resolved");
+        })
+////////////////////////////////////////////////
+
+        const promise3 = new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    console.log("Aysnc 3 resolved");
+                    resolve(
+                        {userName:"Vikas",Email:"vikas@prodt.co"}
+                    )
+                },3000)
+        }).then((data)=>{
+            console.log(data);
+            console.log(data.userName);
+            console.log(data.Email);
+        })
+
+const promise4 = new Promise((resolve,reject)=>{
+    setTimeout(function(){
+        let error = false;
+        if(!error){
+            resolve(
+                {userName:"Vikas",Password:"12356"}
+            )
+        }else{
+            reject("Something went wrong!")
+        }
+    },500);
+}).then((data)=>{
+    console.log(data);
+    return data.Password;
+}).then((Password)=>{
+    console.log(Password);
+}).catch((e)=>{
+    console.log(e);
+}).finally(()=>{
+    console.log("Process has been completed");
+})
+
+const promiseFive = new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        let error = true
+        if (!error) {
+                resolve(
+                    {
+                        name:"raj",
+                        lastname:"malhotra"
+                    }
+                )
+        }
+        else{
+            reject("Error: JS went wrong")
+        }
+    }, 300);
+})
+
+async function consumePromiseFive(){
+    try {
+        const response = await promiseFive;
+    console.log(response);  
+    } catch (error) {
+        console.log(error);
+    }
+}
+consumePromiseFive();
+
+
+
+// async function fakeJson(){
+//    try {
+//     const resp = await fetch('https://jsonplaceholder.typicode.com/posts')
+//    const json = await resp.json();
+//    console.log(json);
+//    } catch (error) {
+//     console.log("Error",error);
+//    }
+// }   
+// fakeJson();
+
+/////////////////////////////////////////
+    fetch('https://jsonplaceholder.typicode.com/posts')
+.then((res)=>{
+    return res.json();
+}).then((data)=>{
+    console.log(data);
+})
+.catch((e)=>{
+    console.log(e);
+})
+
+
+    </script>
+</body>
+</html>
